@@ -1,0 +1,14 @@
+# Dependencies for oceandrift.
+# Install the project itself with:  pip install -e backend
+
+# Core
+numpy>=1.21
+global-land-mask>=1.0
+
+# Visualisation
+matplotlib>=3.4
+cartopy>=0.20
+scipy>=1.7
+
+# Tests
+pytest>=7.0
