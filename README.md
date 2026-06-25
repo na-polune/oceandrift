@@ -17,6 +17,7 @@ pip install -r requirements.txt
 pip install -e backend
 
 python backend/scripts/plot_field.py   # render the current map
+python backend/scripts/plot_drift.py   # drift particles and plot their tracks
 pytest backend/tests                   # run the checks
 ```
 

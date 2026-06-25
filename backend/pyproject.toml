@@ -3,10 +3,9 @@ requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "oceanfield"
+name = "oceandrift"
 version = "0.1.0"
-description = "Analytic, offline toy model of Earth's surface ocean currents."
-readme = "../README.md"
+description = "Offline toy model of Earth's surface currents and the drift of objects on them."
 requires-python = ">=3.9"
 license = { text = "MIT" }
 dependencies = [
@@ -18,7 +17,8 @@ dependencies = [
 plot = [
     "matplotlib>=3.4",
     "cartopy>=0.20",
+    "scipy>=1.7",
 ]
 
 [tool.setuptools]
-packages = ["oceanfield"]
+packages = ["oceanfield", "oceandrift"]

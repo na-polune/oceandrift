@@ -57,3 +57,14 @@ class ToyOceanField(VelocityField):
             u = np.where(ocean, u, 0.0)
             v = np.where(ocean, v, 0.0)
         return u, v
+
+    def is_land(self, lat, lon):
+        """Boolean array: ``True`` where ``(lat, lon)`` is over land.
+
+        Lets a drift engine beach particles without knowing how the mask works.
+        Returns all-``False`` when land masking is disabled.
+        """
+        lat, lon = _broadcast(lat, lon)
+        if self._mask is None:
+            return np.zeros(lat.shape, dtype=bool)
+        return self._mask.is_land(lat, lon)
