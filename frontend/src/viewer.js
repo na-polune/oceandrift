@@ -34,10 +34,12 @@ export function createViewer(containerId) {
 
   viewer.scene.globe.enableLighting = false;
   viewer.scene.skyAtmosphere.show = true;
+  viewer.scene.globe.depthTestAgainstTerrain = false;
 
-  // A pleasant default view: the Atlantic, tilted slightly.
+  // Default view over the Atlantic, kept moderately close: from very far the
+  // wind-layer particles fail the globe depth test and vanish.
   viewer.camera.setView({
-    destination: Cesium.Cartesian3.fromDegrees(-40, 25, 24_000_000),
+    destination: Cesium.Cartesian3.fromDegrees(-40, 25, 15_000_000),
   });
 
   return viewer;

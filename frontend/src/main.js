@@ -24,6 +24,7 @@ const DRIFT_SEEDS = [
 
 async function main() {
   const viewer = createViewer("cesiumContainer");
+  window.viewer = viewer; // exposed for console debugging
 
   let field;
   try {
@@ -39,7 +40,7 @@ async function main() {
   }
 
   try {
-    addCurrentLayer(viewer, field);
+    window.windLayer = addCurrentLayer(viewer, field);
   } catch (error) {
     setStatus(
       "Currents loaded, but the globe failed to render — a WebGL/GPU browser is required.",

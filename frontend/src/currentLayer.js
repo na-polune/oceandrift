@@ -51,11 +51,20 @@ export function addCurrentLayer(viewer, field, options = {}) {
   const windData = buildWindData(field);
   return new WindLayer(viewer, windData, {
     particlesTextureSize: 180, // ~32k particles for fuller coverage
+    // Lift particles well above the surface so they pass the globe depth test
+    // (at far camera distances a low height makes every particle get discarded).
+    particleHeight: 100000,
+    // Seed particles only in the current view so the visible ocean stays dense
+    // instead of being spread thin across the whole globe.
+    useViewerBounds: true,
     lineWidth: { min: 2, max: 4.5 },
-    lineLength: { min: 80, max: 220 },
-    // Ocean currents are slow (~0.1-1 m/s); boost so the motion reads on screen.
-    speedFactor: 18.0,
-    dropRate: 0.0025,
+    lineLength: { min: 40, max: 160 },
+    // The layer scales motion by (pixelSize+50)*speedFactor, which is already
+    // huge at this zoom, so keep speedFactor modest and clamp speed->colour to m/s.
+    speedFactor: 1.0,
+    domain: { min: 0, max: 2 },
+    displayRange: { min: 0, max: 2 },
+    dropRate: 0.008, // reseed often so the field stays populated (no fade-out)
     dropRateBump: 0.01,
     colors: SPEED_COLORS,
     flipY: false, // our /field grid is already south->north
