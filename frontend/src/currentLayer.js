@@ -1,16 +1,15 @@
 import { WindLayer } from "cesium-wind-layer";
 
-// A blue -> green -> yellow -> red ramp by current speed.
+// A bright white -> cyan -> green -> yellow -> red ramp by current speed.
+// Starts near-white (not blue) so slow currents stay visible over the ocean.
 const SPEED_COLORS = [
-  "#2c7bb6",
-  "#00a6ca",
-  "#00ccbc",
-  "#90eb9d",
-  "#ffff8c",
-  "#f9d057",
-  "#f29e2e",
-  "#e76818",
-  "#d7191c",
+  "#ffffff",
+  "#bfefff",
+  "#5fd0ff",
+  "#8cff6a",
+  "#ffe34d",
+  "#ff9a3d",
+  "#ff3b2f",
 ];
 
 /**
@@ -51,12 +50,12 @@ export function buildWindData(field) {
 export function addCurrentLayer(viewer, field, options = {}) {
   const windData = buildWindData(field);
   return new WindLayer(viewer, windData, {
-    particlesTextureSize: 128, // ~16k particles
-    lineWidth: { min: 1, max: 3 },
-    lineLength: { min: 40, max: 160 },
+    particlesTextureSize: 180, // ~32k particles for fuller coverage
+    lineWidth: { min: 2, max: 4.5 },
+    lineLength: { min: 80, max: 220 },
     // Ocean currents are slow (~0.1-1 m/s); boost so the motion reads on screen.
-    speedFactor: 12.0,
-    dropRate: 0.003,
+    speedFactor: 18.0,
+    dropRate: 0.0025,
     dropRateBump: 0.01,
     colors: SPEED_COLORS,
     flipY: false, // our /field grid is already south->north

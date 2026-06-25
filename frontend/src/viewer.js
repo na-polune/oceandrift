@@ -27,8 +27,8 @@ export function createViewer(containerId) {
     fullscreenButton: false,
     infoBox: false,
     selectionIndicator: false,
-    timeline: false,
-    animation: false,
+    timeline: true, // drift animation needs the clock UI (M5)
+    animation: true,
     creditContainer: document.createElement("div"), // hide the credit overlay
   });
 

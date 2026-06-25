@@ -21,4 +21,23 @@ export async function fetchField({ resolution = 1.5, timeDays = 0 } = {}) {
   return response.json();
 }
 
+/**
+ * Run a drift simulation and get the trajectories.
+ *
+ * @param {object} body - the POST /drift request (seeds/patch, duration_days,
+ *   dt_hours, diffusivity, format, ...)
+ * @returns {Promise<object|Array>} GeoJSON FeatureCollection or CZML array.
+ */
+export async function fetchDrift(body) {
+  const response = await fetch(`${API_BASE}/drift`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    throw new Error(`POST /drift failed: ${response.status}`);
+  }
+  return response.json();
+}
+
 export { API_BASE };

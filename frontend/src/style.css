@@ -48,3 +48,31 @@ body {
   color: #ff9a8c;
   opacity: 1;
 }
+
+#legend {
+  margin-top: 8px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+#legend .muted {
+  opacity: 0.6;
+}
+
+#legend .swatch {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+#legend .swatch.dot {
+  background: #ffa500;
+  border-radius: 50%;
+}
+
+#legend .swatch.streak {
+  background: linear-gradient(90deg, #ffffff, #5fd0ff, #8cff6a, #ff3b2f);
+  border-radius: 2px;
+}
