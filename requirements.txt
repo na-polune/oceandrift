@@ -10,5 +10,10 @@ matplotlib>=3.4
 cartopy>=0.20
 scipy>=1.7
 
+# Web API
+fastapi>=0.100
+uvicorn[standard]>=0.22
+
 # Tests
 pytest>=7.0
+httpx>=0.24
