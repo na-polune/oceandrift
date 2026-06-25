@@ -1,6 +1,6 @@
 # oceandrift
 
-Simulating Earth's ocean currents — and how things drift on them.
+Simulating Earth's ocean currents and how things drift on them.
 
 > 🚧 Early work in progress.
 
